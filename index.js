@@ -11,9 +11,10 @@ client.config = Config;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}\n${client.guilds.size} servers!`);
-
+  // Tells the bot where to send the coins stats 
   let channel = client.channels.get(Config.Newsroom);
 
+  //CoinPaprika API
   setInterval(function() {
     request('https://api.coinpaprika.com/v1/tickers/cds-crypto-development-services/', function(error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -22,6 +23,7 @@ client.on('ready', () => {
       }
     });
   }, Config.msgdelay);
+  // CMC API
   // setInterval(function() {
   //   request('https://api.coinmarketcap.com/v2/ticker/1/?convert=ETH', function(error, response, body) {
   //     if (!error && response.statusCode == 200) {
@@ -30,22 +32,7 @@ client.on('ready', () => {
   //     }
   //   });
   // }, Config.msgdelay);
-  // setInterval(function() {
-  //   request('https://api.coinmarketcap.com/v2/ticker/328/?convert=BTC', function(error, response, body) {
-  //     if (!error && response.statusCode == 200) {
-  //       let info = JSON.parse(body);
-  //       channel.send(`**Monero Price:** **XMR/USD$** ${info.data.quotes.USD.price} **XMR/BTC** ${info.data.quotes.BTC.price}`);
-  //     }
-  //   });
-  // }, Config.msgdelay);
-  // setInterval(function() {
-  //   request('https://api.coinmarketcap.com/v2/ticker/74/?convert=BTC', function(error, response, body) {
-  //     if (!error && response.statusCode == 200) {
-  //       let info = JSON.parse(body);
-  //       channel.send(`**Dogecoin Price:** **DOGE/USD$** ${info.data.quotes.USD.price} **DOGE/BTC** ${info.data.quotes.BTC.price}`);
-  //     }
-  //   });
-  // }, Config.msgdelay);
+
 
   // Creating the tables for the database
 });

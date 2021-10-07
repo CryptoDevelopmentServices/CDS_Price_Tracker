@@ -1,12 +1,12 @@
 {
-  "name": "discord-cointicker",
+  "name": "cds-price-tracker-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tracks Crypto Currency price of specified coin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Cedric Le Denmat",
+  "author": "CryptoLover705",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.3.2",
