@@ -16,10 +16,12 @@ client.on('ready', () => {
 
   //CoinPaprika API
   setInterval(function() {
-    request('https://api.coinpaprika.com/v1/tickers/cds-crypto-development-services/', function(error, response, body) {
+    request('https://api.coinpaprika.com/v1/tickers/cds-crypto-development-services/', function(error, response, body,) {
+      
       if (!error && response.statusCode == 200) {
-        let info = JSON.parse(body);
-        channel.send(`${body}` + `\n**Powered by CoinPaprika API**\n\n**__Please note this is in json format__**`);
+        let data = JSON.parse(body);
+        var text = `Id: ${data.id}\nName: ${data.name}\nSymbol: ${data.symbol}\nRank: ${data.rank}\nCirculating supply: ${data.circulating_supply}\nPrice usd: ${data.quotes.USD.price}\n24 hour Volume: ${data.quotes.USD.volume_24h}\n24 hour Change: ${data.quotes.USD.volume_24h_change_24h}%\nMarketCap: ${data.quotes.USD.market_cap}`
+        channel.send(`${text}` + `\n\n**Powered by CoinPaprika API**\n`);
       }
     });
   }, Config.msgdelay);
